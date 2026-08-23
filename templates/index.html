@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename = 'image.jpg')}}">
+</head>
+<body>
+
+    <div class="container">
+
+    <h1>Sentiment Analysis</h1>
+    <p class="description">Enter your comment and let the AI analyze its sentiment.</p>
+
+    <form action="/predict" method="post">
+        <label for="user">Enter your Comment:</label>
+        <br>
+        <input type="text" id="user" name="user" placeholder="Write your comment here..." required>
+        <br>
+        <br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Result</h2>
+
+        <p>Your Comment:</p>
+        <p>{{comment}}</p>
+
+        <p>Sentiment:</p>
+        <h3>{{prediction}}</h3>
+    </div>
+    {% endif %}
+    </div>
+</body>
+</html>
