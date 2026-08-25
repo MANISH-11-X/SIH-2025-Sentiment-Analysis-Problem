@@ -5,10 +5,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
     <link rel="icon" href="{{url_for('static', filename = 'image.jpg')}}">
 
-
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         .dashboard {
@@ -38,7 +35,7 @@
 </head>
 
 <body>
-     <nav class="navbar">
+    <nav class="navbar">
 
         <div class="logo">
             Sentiment AI
@@ -54,16 +51,14 @@
 <div class="dashboard">
 
     <h1 style="margin-top: 80px;">Sentiment Dashboard</h1>
+<div class="cards">
 
-    <!-- Cards -->
-    <div class="cards">
-
-        <div class="card">
+    <div class="card">
             <h3>Total Comments</h3>
             <h2>{{ total }}</h2>
-        </div>
+     </div>
 
-        <div class="card">
+    <div class="card">
             <h3>Positive</h3>
             <h2>{{ positive }}%</h2>
         </div>
@@ -79,30 +74,17 @@
         </div>
 
     </div>
-
-
-    <!-- Pie Chart -->
-
-    <div class="chart-container">
+<div class="chart-container">
         <canvas id="sentimentChart"></canvas>
     </div>
-
-
 </div>
-
-
 <script>
 
     const positive = {{ positive }};
     const neutral = {{ neutral }};
     const negative = {{ negative }};
 
-
-    // Get canvas
     const ctx = document.getElementById("sentimentChart");
-
-
-    // Create Chart
     new Chart(ctx, {
 
         type: "pie",
