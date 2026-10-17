@@ -104,6 +104,7 @@ def predict():
 
     return render_template('index.html', prediction = prediction, comment = user)
 
+
 @app.route("/dashboard")
 def dashboard():
 
@@ -111,11 +112,14 @@ def dashboard():
 
     total = len(predictions)
 
-    if total > 0:
+    positive_c = count["Positive"]
+    neutral_c = count["Neutral"]
+    negative_c = count["Negative"]
 
-        positive = (count["Positive"] / total) * 100
-        neutral = (count["Neutral"] / total) * 100
-        negative = (count["Negative"] / total) * 100
+    if total > 0:
+        positive = (positive_c / total) * 100
+        neutral = (neutral_c / total) * 100
+        negative = (negative_c / total) * 100
 
     else:
         positive = 0
@@ -123,17 +127,17 @@ def dashboard():
         negative = 0
 
     return render_template(
-        'dashboard.html',
+        "dashboard.html",
 
-        total = total,
+        total=total,
 
-        positive = round(positive, 2),
-        neutral = round(neutral, 2),
-        negative  = round(negative, 2),
+        positive=round(positive, 2),
+        neutral=round(neutral, 2),
+        negative=round(negative, 2),
 
-        positive_c = count["positive"],
-        neutral_c = ["neutral"],
-        negative_c = ["negative"]
+        positive_c=positive_c,
+        neutral_c=neutral_c,
+        negative_c=negative_c
     )
 
 
